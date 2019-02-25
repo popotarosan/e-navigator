@@ -9,6 +9,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container >
+    <header>
+    <ul class="navbar-nav" >
+    <% if user_signed_in? %>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %><li>
+      <li><%= link_to "プロフィール", edit_user_path(current_user), method: :get %></li>
+    <% end %>
+    </ul>
+    </header>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+    
   </body>
 </html>

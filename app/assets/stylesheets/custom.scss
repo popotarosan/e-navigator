@@ -1,0 +1,48 @@
+
+input, textarea, select, {
+  box-sizing: border-box;
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  font-size:1rem;
+  line-height:1.5;
+}
+//checkboxの隣にすぐラベルが来るように
+input[type="checkbox"] {
+  width:auto;
+  
+}
+input {
+  height: auto !important;
+}
+
+form {
+  margin: 0 auto;
+  padding:0 100px;
+  // width:100%;
+  // width:100%;
+}
+
+.btn {
+  background-color:blue;
+  color:white;
+}
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+ul {
+  list-style: none;
+
+}
+li {
+  display: inline-block;
+  padding-left:3px;
+  padding-right:3px;
+}
