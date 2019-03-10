@@ -4,7 +4,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  # Eager load code on boot. This eager loads most of Rails and
+  # Eager load code
+  on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
@@ -86,7 +87,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.action_mailer.default_url_options = {host: 'https://e-navigator-popotarosan.herokuapp.com' }
-  config.action_mailer.raise_delivery_errors = false #この一文も追記!!
+  config.action_mailer.raise_delivery_errors = false 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :user_name => ENV['SENDGRID_USERNAME'],
