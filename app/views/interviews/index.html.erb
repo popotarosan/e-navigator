@@ -1,0 +1,12 @@
+<h1>面接一覧</h2>
+<ul class="interviews">
+  <% if @interviews %>
+    <% @interviews.each do |interview| %>
+      <li>
+        <%=interview.scheduled_at%>
+        <%=interview.status%>
+        
+      </li>
+    <%end%>
+  <%end%>
+</ul>
