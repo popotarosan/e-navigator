@@ -36,4 +36,25 @@ li {
   padding-left: 3px;
   padding-right: 3px; }
 
+#interview_scheduled_at_1i {
+  width:10%;
+}
+#interview_scheduled_at_2i {
+  width:10%;
+}
+#interview_scheduled_at_3i {
+  width:10%;
+}
+#interview_scheduled_at_4i {
+  width:10%;
+}
+#interview_scheduled_at_5i {
+  width:10%;
+}
+label {
+  display:block;
+}
 /*# sourceMappingURL=custom.css.map */
+.interviews > li {
+  display:block;
+}
