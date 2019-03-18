@@ -2,7 +2,7 @@ class InterviewsController < ApplicationController
   before_action :set_user, only: [:index,:new,:create]
   
   def index
-    @interviews =  Interview.where(user_id:@user.id)
+    @interviews =  @user.interviews
     
   end
   
