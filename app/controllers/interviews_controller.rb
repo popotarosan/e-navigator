@@ -12,6 +12,7 @@ class InterviewsController < ApplicationController
   
   def create
     @interview = Interview.new(interview_params)
+    @interview.user_id = current_user.id
     if @interview.save
       flash[:success] = "保存に成功しました"
       redirect_to user_interviews_path(@user)
@@ -24,7 +25,7 @@ class InterviewsController < ApplicationController
   private
   
   def interview_params
-    params.require(:interview).permit(:scheduled_at,:user_id)
+    params.require(:interview).permit(:scheduled_at)
   end
   def set_user
     @user = User.find(params[:user_id])
