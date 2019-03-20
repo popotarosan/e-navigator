@@ -11,8 +11,7 @@ class InterviewsController < ApplicationController
   end
   
   def create
-    @interview = Interview.new(interview_params)
-    @interview.user_id = current_user.id
+    @interview = current_user.interviews.new(interview_params)
     if @interview.save
       flash[:success] = "保存に成功しました"
       redirect_to user_interviews_path(@user)
