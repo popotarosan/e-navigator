@@ -16,6 +16,7 @@
       <li><%= link_to "ホーム", root_path, method: :get %><li>
       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %><li>
       <li><%= link_to "プロフィール", edit_user_path(current_user), method: :get %></li>
+      <li><%= link_to "自分の面接一覧", user_interviews_path(current_user), method: :get %></li>
       <li><%= link_to "面接登録",  new_user_interview_path(current_user), method: :get %></li>
     <% end %>
     </ul>
