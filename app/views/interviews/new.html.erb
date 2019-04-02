@@ -1,0 +1,12 @@
+<!--面接情報を入力するためのフォーム-->
+<!--面接情報:は日時だけ-->
+<!--保存するためのボタンを作る-->
+
+<h1>新規面接作成</h1>
+<%= form_for(@interview, url:user_interviews_path(@user)) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.label "開始時間" %>
+  <%= f.datetime_select :scheduled_at, class: 'form-control' %>
+  <%= f.submit "送信", class: "btn btn-primary" %>
+<% end %>
