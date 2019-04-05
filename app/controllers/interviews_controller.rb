@@ -55,7 +55,7 @@ class InterviewsController < ApplicationController
     @user = User.find(params[:user_id])
   end
   def set_interview
-    @interview = current_user.interviews.find(params[:id])    
+    @interview = Interview.find(params[:id])    
   end
     
 end
