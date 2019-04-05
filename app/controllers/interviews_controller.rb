@@ -1,6 +1,6 @@
 class InterviewsController < ApplicationController
   before_action :set_user, only: [:index,:new,:create,:update,:destroy]
-  
+  before_action :set_interview, only: [:edit,:update,:destroy]
   def index
     @interviews =  @user.interviews
     
@@ -23,12 +23,11 @@ class InterviewsController < ApplicationController
   end
   
   def edit
-    @interview = current_user.interviews.find(params[:id])    
+        
   end
   
   #面接情報を更新する
   def update
-    @interview = current_user.interviews.find(params[:id]) 
     if @interview.update_attributes(interview_params)
       flash[:success] = "保存に成功しました"
       redirect_to user_interviews_path(@user)
@@ -39,7 +38,6 @@ class InterviewsController < ApplicationController
   end
   #面接情報を削除する
   def destroy
-    @interview = current_user.interviews.find(params[:id]) 
     if @interview.destroy
        flash[:success] = "削除に成功しました"
     else
@@ -56,4 +54,8 @@ class InterviewsController < ApplicationController
   def set_user
     @user = User.find(params[:user_id])
   end
+  def set_interview
+    @interview = current_user.interviews.find(params[:id])    
+  end
+    
 end
