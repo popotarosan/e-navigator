@@ -1,0 +1,10 @@
+<h1>編集画面</h1>
+
+<!--@interviewの中身を初期値としてformの生成-->
+
+<%=form_for @interview,url:user_interview_path(current_user,@interview) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label "開始時間" %>
+  <%= f.datetime_select :scheduled_at, value:@interview.scheduled_at,class: 'form-control',use_month_numbers: true %>
+  <%= f.submit "送信", class: "btn btn-primary" %>
+<% end %>

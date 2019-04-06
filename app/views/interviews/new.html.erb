@@ -7,6 +7,6 @@
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.hidden_field :user_id, :value => @user.id %>
   <%= f.label "開始時間" %>
-  <%= f.datetime_select :scheduled_at, class: 'form-control' %>
+  <%= f.datetime_select :scheduled_at, class: 'form-control',use_month_numbers: true %>
   <%= f.submit "送信", class: "btn btn-primary" %>
 <% end %>
