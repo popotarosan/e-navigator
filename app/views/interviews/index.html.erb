@@ -1,17 +1,17 @@
 <h1>面接一覧</h1>
-<table>
-    <tr>
-      <th>作成日</th>
-      <th>承認状況</th>
-      <th> </th>
-      <th> </th>
-    </tr>
-    <% @interviews.each do |interview| %>
-    <tr>
-        <td><%= interview.scheduled_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
-        <td><%= interview.status %></td>
-        <td><%= button_to("編集",edit_user_interview_path(current_user,interview),method:'get') %></td>
-        <td><%= button_to("削除",user_interview_path(current_user,interview),method:'delete') %></td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-    </tr>
-    <%end%>
+<p class="confirmed_interview_day">現在の設定済みの面接日程:
+  <strong><%if @confirmed_interview %>
+    <%=@confirmed_interview.scheduled_at.strftime("%Y年%-m月%-d日 %-H時%-M分")%>
+  <%end%>
+  </strong>
+</p>
+<table border="1">
+  <!--ログインユーザーと同じユーザーの面接一覧を見ている場合の表示-->
+  <% if current_user == @user %>
+    <%=render :partial => "index_for_login_user"%> 
+  <!--ログインユーザーが別のユーザーの面接一覧を見ている場合の表示-->
+  <%else %>
+    <%=render :partial => "index_for_other_user"%>
+    
+  <%end%>
 </table>
