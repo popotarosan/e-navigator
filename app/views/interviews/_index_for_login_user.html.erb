@@ -1,0 +1,21 @@
+<tr>
+  <th>作成日</th>
+  <th>承認状況</th>
+  <th> </th>
+  <th> </th>
+</tr>
+<% if @interviews %>
+  <% @interviews.each do |interview| %>
+    <tr>
+      <td><%= interview.scheduled_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></td>
+      <td><%= interview.status %></td>
+      <% if interview.status == "保留"%>
+        <td><%= button_to("編集",edit_user_interview_path(current_user,interview),method:'get') %></td>
+        <td><%= button_to("削除",user_interview_path(current_user,interview),method:'delete') %></td>
+      <%else%>
+        <td><%= "----" %></td>
+        <td><%= "----" %></td>
+      <%end%>
+    </tr>
+  <%end%>
+<%end%>
