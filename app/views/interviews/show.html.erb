@@ -1,0 +1,8 @@
+<!--特定の面接の詳細情報を表示する-->
+<!--面接へのリンクを作る-->
+
+<div class="interview-show">
+  <p>開始時間:<%=@interview.scheduled_at.strftime("%Y年%-m月%-d日 %-H時%-M分")%></p>
+  <p>承認状態:<%=@interview.status%></p>
+</div>
+<%=button_to "面接一覧へ",user_interviews_path(@user),method:"get",class:"interview-index-button"%>
