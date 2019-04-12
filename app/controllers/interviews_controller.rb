@@ -3,7 +3,7 @@ class InterviewsController < ApplicationController
   before_action :set_interview, only: [:edit,:update,:destroy]
   def index
     @interviews =  @user.interviews
-    
+    @confirmed_interview = Interview.find_by("interviewer_id is not null and user_id = ?",@user.id)
   end
   
   def new
