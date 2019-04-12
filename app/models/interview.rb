@@ -1,4 +1,4 @@
 class Interview < ApplicationRecord
   belongs_to :user
-  enum status: {approve:1, reject:2, hold:3}
+  enum status: {"承認":1, "拒否":2, "保留":3}
 end
