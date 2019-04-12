@@ -1,6 +1,6 @@
 class InterviewsController < ApplicationController
-  before_action :set_user, only: [:index,:new,:create,:update,:destroy]
-  before_action :set_interview, only: [:edit,:update,:destroy]
+  before_action :set_user, only: [:index,:new,:create,:update,:destroy,:show]
+  before_action :set_interview, only: [:edit,:update,:destroy,:show]
   def index
     @interviews =  @user.interviews
     @confirmed_interview = Interview.find_by("interviewer_id is not null and user_id = ?",@user.id)
