@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :users  do
     resources :interviews
   end
-  
+  # configure letter_opener_web route
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
