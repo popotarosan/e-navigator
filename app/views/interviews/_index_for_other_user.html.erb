@@ -2,8 +2,10 @@
   <th>設定・変更したい場合は下記の面接日付一覧からクリック！</th>
 </tr>
 <% @interviews.each do |interview| %>
-  <tr>
-    <td><%=button_to interview.scheduled_at.strftime("%Y年%-m月%-d日 %-H時%-M分"),user_interview_path(@user,interview),method:"put",
-    data: {confirm: "面接日程を#{interview.scheduled_at.strftime("%Y年%-m月%-d日 %-H時%-M分")}に変更してもいいですか?" }%></td>
-  </tr>
+  <%if interview != @confirmed_interview  %>
+    <tr>
+      <td><%=button_to interview.scheduled_at.strftime("%Y年%-m月%-d日 %-H時%-M分"),user_interview_path(@user,interview),method:"put",
+      data: {confirm: "面接日程を#{interview.scheduled_at.strftime("%Y年%-m月%-d日 %-H時%-M分")}に変更してもいいですか?" }%></td>
+    </tr>
+  <%end%>
 <%end%>
