@@ -1,9 +1,9 @@
 class InterviewsController < ApplicationController
-  before_action :set_user, only: [:index,:new,:create,:update,:destroy]
-  before_action :set_interview, only: [:edit,:update,:destroy]
+  before_action :set_user, only: [:index,:new,:create,:update,:destroy,:show]
+  before_action :set_interview, only: [:edit,:update,:destroy,:show]
   def index
     @interviews =  @user.interviews
-    
+    @confirmed_interview = @interviews.approved.first
   end
   
   def new
@@ -25,15 +25,35 @@ class InterviewsController < ApplicationController
   def edit
         
   end
+  def show
+    
+  end
   
   #面接情報を更新する
   def update
-    if @interview.update_attributes(interview_params)
-      flash[:success] = "保存に成功しました"
-      redirect_to user_interviews_path(@user)
+    #自分の面接を更新する場合
+    if current_user == @user
+      if @interview.update_attributes(interview_params)
+        flash[:success] = "保存に成功しました"
+        redirect_to user_interviews_path(@user)
+      else
+        flash[:failure] = "保存に失敗しました"
+        render 'edit'
+      end
+    #他の人の面接を更新する場合
     else
-      flash[:failure] = "保存に失敗しました"
-      render 'edit'
+      Interview.transaction do
+        if @interview.update_attributes(interviewer_id:current_user.id,status: :approved) and 
+        @user.interviews.where("id != ?",@interview.id).to_a.each{
+        |interview| interview.update_attributes(interviewer_id:nil,status: :rejected)}
+          flash[:success] = "面接日程を承認しました"
+          redirect_to user_interview_path(@user,@interview)
+        else
+          flash[:failure] = "面接日程の承認に失敗しました"
+          redirect_to user_interviews_path(@user)
+          raise ActiveRecord::Rollback
+        end
+      end
     end
   end
   #面接情報を削除する

@@ -1,0 +1,15 @@
+
+<table border="1">
+  <tr>
+    <th>名前</th>
+    <th>メールアドレス</th>
+    <th>面接一覧</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%=user.name%></td>
+    <td><%=user.email%></td>
+    <td><%=button_to "確認",user_interviews_path(user),method:"get" %></td>
+  </tr>
+  <%end%>
+</table>    

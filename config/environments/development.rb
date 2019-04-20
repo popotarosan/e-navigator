@@ -47,19 +47,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: "https://53492dec52af4fa1bd6253b5b398f4fe.vfs.cloud9.us-east-2.amazonaws.com" }
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  config.action_mailer.smtp_settings = {
-  :enable_starttls_auto => true,
-  :address => "smtp.gmail.com",
-  :port => 587,
-  :domain => 'smtp.gmail.com',
-  :user_name => ENV['GMAIL_ADDRESS'], #gmailアドレス
-  :password => ENV['GMAIL_PASSWORD'],#gmailパスワード
-  :authentication => 'login',
-}
+  
+  #letter_opener_webを使用するため設定
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+  
 end

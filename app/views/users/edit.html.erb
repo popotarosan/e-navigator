@@ -1,21 +1,20 @@
-<h1>Update your profile</h1>
+<h1>プロフィール編集</h1>
 
     <%= form_for(@user) do |f| %>
       
       <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :name %>
+      <%= f.label "名前" %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :birthday %>
+      <%= f.label "誕生日" %>
       <%= f.date_field :birthday, class: 'form-control' %>
       
-      <%= f.label :school_name %>
+      <%= f.label "学校名" %>
       <%= f.text_field :school_name, class: 'form-control' %>
       
-      <%= f.label :gender %>
-      <%= f.select :gender,["male", "female"] ,class: 'form-control' %>
+      <%= f.label "性別" %>
+      <%= f.select :gender,["female", "male"] ,class: 'form-control' %>
       
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= f.submit "保存", class: "btn btn-primary" %>
        
     <% end %>
-

@@ -23,8 +23,8 @@ form {
 .container {
   box-sizing: border-box;
   width: 100%;
-  padding-right: 25px;
-  padding-left: 25px;
+  padding-right: 10%;
+  padding-left: 10%;
   margin-right: auto;
   margin-left: auto; }
 
@@ -80,4 +80,54 @@ table td {
 
 h1 {
   text-align: center;
+}
+.interview-show{
+  padding-left:100px;
+}
+
+.interview-index-button{
+  width:20%;
+}
+
+.confirmed_interview_day{
+  text-align: center;
+  color:red;
+  
+}
+td {
+  text-align: center;
+}
+
+.alert-failure{
+  width:100%;
+  background-color:#ffc0cb;
+  text-align:center;
+  margin: auto;
+  border-radius:5px;
+}
+.alert-success{
+  width:100%;
+  background-color:#afeeee;
+  text-align:center;
+  margin: auto;
+  border-radius:5px;
+}
+input[type="submit"]{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  
+}
+
+.navbar-nav{
+  display: inline-flex;
+  width:90%;
+  justify-content: flex-end;
+  margin-left:0px;
+  margin-right:0px;
+}
+header {
+background-color:#000000;
+color:#FFFFFF;
+
 }
