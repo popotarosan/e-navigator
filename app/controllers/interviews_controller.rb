@@ -42,16 +42,10 @@ class InterviewsController < ApplicationController
       end
     #他の人の面接を更新する場合
     else
-      @old_confirmed_interview = @user.interviews.find_by("interviewer_id is not null")
       Interview.transaction do
-        if @interview == @old_confirmed_interview
-          flash[:failure] = "選んだ面接はすでに承認されています"
-          redirect_to user_interviews_path(@user)
-        elsif @interview.scheduled_at < Time.now
-          flash[:failure] = "その面接は現在時刻より前なので、設定できません"
-          redirect_to user_interviews_path(@user)
-        elsif @interview.update_attributes!(interviewer_id:current_user.id,status:"承認") and 
-        @user.interviews.where("id != ?",@interview.id).update_all(interviewer_id:nil,status:"拒否")
+        if @interview.update_attributes(interviewer_id:current_user.id,status: :approved) and 
+        @user.interviews.where("id != ?",@interview.id).to_a.each{
+        |interview| interview.update_attributes(interviewer_id:nil,status: :rejected)}
           flash[:success] = "面接日程を承認しました"
           redirect_to user_interview_path(@user,@interview)
         else
